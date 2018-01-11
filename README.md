@@ -6,6 +6,12 @@ travis CI
 coveralls
 link up heroku CI
 
+## TODO
+
+## improvements / clarification
+
+- how to handle punctuation at the moment it is kept in words.
+
 ## installation
 
 TODO! Add vendoring. use govendor or whatever it was on other projects.
