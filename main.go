@@ -9,6 +9,7 @@ import (
 
 	"golang.org/x/oauth2"
 	"google.golang.org/api/googleapi/transport"
+	"google.golang.org/api/option"
 
 	language "cloud.google.com/go/language/apiv1"
 
@@ -37,7 +38,9 @@ func start(addr, key string) {
 	ctx := context.WithValue(context.Background(), oauth2.HTTPClient, &http.Client{
 		Transport: &transport.APIKey{Key: key},
 	})
-	client, err := language.NewClient(ctx)
+
+	clientOpt := option.WithAPIKey(key)
+	client, err := language.NewClient(ctx, clientOpt)
 	if err != nil {
 		log.Fatal(err)
 	}
