@@ -24,9 +24,9 @@ var (
 
 func main() {
 	flag.Parse()
-
-	start(*addr, *key)
 	fmt.Printf("Starting service @ %s with auth key %s \n", *addr, *key)
+	start(*addr, *key)
+
 }
 
 // start expects flags to be already parsed or manually set
