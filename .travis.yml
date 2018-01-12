@@ -1,0 +1,9 @@
+language: go
+go:
+- 1.8.1
+
+install:
+- echo "Already vendored dependencies..."
+
+script:
+- go test ./...
