@@ -6,4 +6,4 @@ install:
 - echo "Already vendored dependencies..."
 
 script:
-- go test ./...
+- go test -v $(go list ./... | grep -v /analyze/)

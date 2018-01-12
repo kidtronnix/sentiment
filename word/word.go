@@ -9,6 +9,6 @@ type WordScore struct {
 
 // TODO! add test and comment
 func (w *WordScore) MarshalJSON() ([]byte, error) {
-	str := fmt.Sprintf("{\"%s\":%f}", w.Word, w.Score)
+	str := fmt.Sprintf("{\"%s\":%.1f}", w.Word, w.Score)
 	return []byte(str), nil
 }

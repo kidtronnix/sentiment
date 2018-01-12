@@ -7,8 +7,6 @@ import (
 	"log"
 	"net/http"
 
-	"golang.org/x/oauth2"
-	"google.golang.org/api/googleapi/transport"
 	"google.golang.org/api/option"
 
 	language "cloud.google.com/go/language/apiv1"
@@ -33,18 +31,18 @@ func main() {
 // start expects flags to be already parsed or manually set
 func start(addr, key string) {
 
-	// ctx := context.Background()
+	// if you have google default application creds setup this will add auth creds to ctx
+	ctx := context.Background()
 
-	ctx := context.WithValue(context.Background(), oauth2.HTTPClient, &http.Client{
-		Transport: &transport.APIKey{Key: key},
-	})
-
-	clientOpt := option.WithAPIKey(key)
-	client, err := language.NewClient(ctx, clientOpt)
+	// let client use API key (little unsure if this is actually used)
+	// TODO! add client logging so can debug reqs easily.
+	clientApiKeyOpt := option.WithAPIKey(key)
+	client, err := language.NewClient(ctx, clientApiKeyOpt)
 	if err != nil {
 		log.Fatal(err)
 	}
 
+	// construct http handler
 	handler := api.Handler{
 		Anlyzr: &analyze.GoogleAnalyzer{
 			Client: client,
@@ -52,10 +50,11 @@ func start(addr, key string) {
 		},
 	}
 
-	// add middleware to our router
+	// add useful middleware to handler: logging, panic recovery, etc...
 	n := negroni.Classic()
 	n.UseHandler(handler)
 
+	// serve handler on /api route
 	http.Handle("/api", n)
 	log.Fatal(http.ListenAndServe(addr, nil))
 }

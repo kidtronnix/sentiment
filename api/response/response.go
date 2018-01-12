@@ -23,7 +23,7 @@ func JSON(w http.ResponseWriter, j interface{}) {
 
 	jsonResp, err := json.Marshal(j)
 	if err != nil {
-		fmt.Println(err)
+		// fmt.Println(err)
 		InternalError(w)
 		return
 	}

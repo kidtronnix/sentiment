@@ -2,6 +2,8 @@ package analyze
 
 import "github.com/smaxwellstewart/sentiment/word"
 
+// MockAnalyzer is a dummy analyzer that can be used in place of GoogleAnalyzer this is
+// useful in test or development that only concern the api aspects.
 type MockAnalyzer struct {
 	Err error
 }

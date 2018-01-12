@@ -1,4 +1,4 @@
-package word
+package api
 
 import (
 	"testing"
@@ -11,7 +11,7 @@ func TestStringToWords(t *testing.T) {
 
 	s := "Hello, world, world!"
 
-	ws := StringToWords(s)
+	ws := ContentToWords(s)
 
 	expected := []string{"hello", "world"}
 

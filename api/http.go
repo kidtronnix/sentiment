@@ -40,11 +40,11 @@ func (h Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 
 	// analyse
-	ws := word.StringToWords(p.Content)
+	ws := ContentToWords(p.Content)
 	// TODO! perform error check
 	scores, _ := h.Anlyzr.Analyze(ws)
 
-	// order
+	// TODO! turn into function and test
 	order := strings.ToLower(r.URL.Query().Get("order"))
 	if order == "" {
 		order = DefaultOrder
@@ -59,7 +59,7 @@ func (h Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		response.BadRequest(w, "Order param must be <asc|desc>.")
 	}
 
-	// limit
+	// TODO! turn into function and test
 	limit := r.URL.Query().Get("limit")
 	var n int
 	if limit == "" {
