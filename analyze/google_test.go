@@ -10,7 +10,7 @@ import (
 
 // NOTE! This test needs internet connection and will need google access to Language api.
 
-func TestStringToWords(t *testing.T) {
+func TestGoogleAnalyzer(t *testing.T) {
 	assert := assert.New(t)
 
 	// if you have google default application creds setup this will add auth creds to ctx

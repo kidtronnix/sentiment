@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestStringToWords(t *testing.T) {
+func TestContentToWords(t *testing.T) {
 	assert := assert.New(t)
 
 	s := "Hello, world, world!"
