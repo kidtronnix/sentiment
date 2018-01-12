@@ -1,6 +1,6 @@
 # sentiment
 
-Example of google ml service implementation in golang.
+Example of google language service implementation in golang.
 
 [![Build Status](https://travis-ci.org/smaxwellstewart/sentiment.svg?branch=master)](https://travis-ci.org/smaxwellstewart/sentiment)
 
@@ -15,7 +15,7 @@ Example of google ml service implementation in golang.
 
 ### Setup! Authenticate with Google APIs
 
-To run this code you local enviroment needs to have google's [default application credentials](https://developers.google.com/identity/protocols/application-default-credentials) setup.
+To run this code your local enviroment needs to have google's [default application credentials](https://developers.google.com/identity/protocols/application-default-credentials) setup.
 
 ```
 $ gcloud init
