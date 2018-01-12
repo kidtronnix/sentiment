@@ -28,6 +28,12 @@ You should now have a file under `~/.config/gcloud/application_default_credentia
 
 ```
 $ cat ~/.config/gcloud/application_default_credentials.json
+{
+  "client_id": "XXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXXXXXXXX.apps.googleusercontent.com",
+  "client_secret": "XXXXXXXXXXXXXXXX",
+  "refresh_token": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "type": "authorized_user"
+}
 ```
 
 ### Run! Start the web service
