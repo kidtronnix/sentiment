@@ -1,9 +1,12 @@
 package main
 
 import (
+	"context"
 	"flag"
 	"log"
 	"net/http"
+
+	language "cloud.google.com/go/language/apiv1"
 
 	"github.com/smaxwellstewart/sentiment/analyze"
 	"github.com/smaxwellstewart/sentiment/api"
@@ -23,8 +26,17 @@ func main() {
 // start expects flags to be already parsed or manually set
 func start(addr string) {
 
+	ctx := context.Background()
+	client, err := language.NewClient(ctx)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	handler := api.Handler{
-		Anlyzr: &analyze.MockAnalyzer{},
+		Anlyzr: &analyze.GoogleAnalyzer{
+			Client: client,
+			Ctx:    ctx,
+		},
 	}
 
 	// add middleware to our router
