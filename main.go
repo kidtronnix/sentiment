@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"flag"
+	"fmt"
 	"log"
 	"net/http"
 
@@ -18,13 +19,14 @@ import (
 
 var (
 	addr = flag.String("addr", ":8000", "http socket address")
-	key  = flag.String("api-key", "", "google api key")
+	key  = flag.String("key", "", "google api key")
 )
 
 func main() {
 	flag.Parse()
 
 	start(*addr, *key)
+	fmt.Printf("Starting service @ %s with auth key %s \n", *addr, *key)
 }
 
 // start expects flags to be already parsed or manually set
